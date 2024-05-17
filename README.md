@@ -1,2 +1,2 @@
-# html-porfolio
+# html-portfolio
 WedDev Classes
