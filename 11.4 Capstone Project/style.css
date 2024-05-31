@@ -19,7 +19,7 @@ body{
     box-sizing: border-box;
     overflow: hidden;
 }
-.container{ /* Container for the div */
+.profile-container{ /* profile-container for the div */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,7 +87,7 @@ h2{
     padding: 0 20px;
 
 }
-.container p{
+.intro{
     width: 50%;
     text-align: center;
     font-size: 1.2rem;
@@ -123,7 +123,7 @@ h2{
         padding: 0 20px;
     
     }
-    .container p{
+    .intro{
         width: 80%;
         text-align: justify;
         font-size: 12px;
