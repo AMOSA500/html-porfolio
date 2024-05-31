@@ -1,0 +1,133 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Merriweather", serif;
+
+}
+.gradient-background {
+    background: linear-gradient(60deg, #2f700e, #d0df7e, #f7e38e);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+  }
+
+.top-container{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    background-color: #f3f3f3;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.container{ /* Container for the div */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+.sunrise{
+    position: absolute;
+    width: 200px;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+h1{
+     font-size: 5rem;
+     font-family: "Sacramento", cursive;
+     margin: 0;
+}
+h2{
+     font-size: 1.5rem;
+     font-family: sans-serif;
+     margin: 0;
+}
+.title_text{
+    position: relative;
+    width: 100%;
+    top: 200px;
+    font-weight: 700;
+    color: #2f700e;
+    text-align: center;
+    margin: 0;
+    z-index: 2;
+}
+.center-bottom-image{
+    position: absolute;
+    bottom: 20vh;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    
+    
+}
+.profile-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 50px;
+    border: 2px solid #cbceca40;
+}
+.profile-img:hover{
+    border: 2px solid #2f700e30;
+    box-shadow: 0 0 10px #2f700e60;
+    cursor: pointer;
+}
+.summary-text{
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color:#2f700e ;
+    margin: 0;
+    padding: 0 20px;
+
+}
+.container p{
+    width: 50%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #6e8862;
+    border-top: 2px solid #dadada;
+}
+
+@media (max-width: 568px){
+    .top-container{
+        height: 100vh;
+        align-items: center;
+    }
+    .title_text{
+        top: 0px;
+    }
+    .center-bottom-image{
+        bottom: 0;
+        width: 100%;
+    }
+    .profile-img{
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+    }
+    .summary-text{
+        font-size: 1rem;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        color:#2f700e ;
+        margin: 0;
+        padding: 0 20px;
+    
+    }
+    .container p{
+        width: 80%;
+        text-align: justify;
+        font-size: 12px;
+        padding: 10px;
+        
+    }
+}
