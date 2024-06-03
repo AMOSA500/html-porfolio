@@ -19,7 +19,7 @@ body{
     box-sizing: border-box;
     overflow: hidden;
 }
-.profile-container{ /* profile-container for the div */
+.profile-container, .education-container{ /* profile-container for the div */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +27,7 @@ body{
     width: 100%;
     height: 100%;
     position: relative;
+    border-bottom: 2px dashed #dadada40;
 
 }
 .sunrise{
@@ -78,7 +79,7 @@ h2{
     box-shadow: 0 0 10px #2f700e60;
     cursor: pointer;
 }
-.summary-text{
+.text-title{
     font-size: 1.5rem;
     text-align: center;
     font-family: "Montserrat", sans-serif;
@@ -97,6 +98,62 @@ h2{
     border-top: 2px solid #dadada;
 }
 
+.education{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    width: 80%;
+    height: auto;
+    position: relative;
+    margin: 20px 0;
+
+}
+.education-container h2{
+    text-align: center;
+    padding: 10px;
+    
+
+}
+.education-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #dadada; 
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #2f700e30;
+    box-sizing: border-box;
+}
+.education-item-assets{
+    width: 100%;
+    overflow: hidden;
+}
+.education-item-image{
+    width: auto;
+}
+.education-image{
+    width: 100%;
+    height: 150px;
+}
+.education-item-text{
+    width: 100%;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: #2f700e;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 2px dashed #dadada60;
+
+}
+.education-item-text *{
+    margin: 0;
+    padding: 0;
+}
 @media (max-width: 568px){
     .top-container{
         height: 100vh;
@@ -114,7 +171,7 @@ h2{
         height: 100px;
         margin: 20px;
     }
-    .summary-text{
+    .text-title{
         font-size: 1rem;
         text-align: center;
         font-family: "Montserrat", sans-serif;
@@ -129,5 +186,19 @@ h2{
         font-size: 12px;
         padding: 10px;
         
+    }
+    .education{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 90%;
+        height: auto;
+        position: relative;
+    
+    }
+    .education-item{
+        box-sizing: border-box;
     }
 }
