@@ -16,32 +16,48 @@ footer {
   font-family: sans-serif;
 }
 
-.f {
-
-}
 
 .a {
+  background-image: url("images/crash.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 
 .s {
-
+  background-image: url("images/kick.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .d {
-
+  background-image: url("images/snare.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.f {
+  background-image: url("images/tom1.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.j {
 
+.j {
+  background-image: url("images/tom2.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .k {
-
+  background-image: url("images/tom3.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .l {
-
+  background-image: url("images/tom4.png") ;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .set {
