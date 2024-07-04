@@ -1,11 +1,10 @@
-randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
-randomNumber2 = Math.floor(Math.random() * 6) + 1; //1-6
 
-document.querySelector("button").addEventListener("click", function(){
-    rollDice();
-});
+document.querySelector("button").addEventListener("click", rollDice);
 
 function rollDice(){
+    randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
+    randomNumber2 = Math.floor(Math.random() * 6) + 1; //1-6
+
     var file_dir = "images/";
     var img1_file = "dice" + randomNumber1 + ".png";
     var img2_file = "dice" + randomNumber2 + ".png";
