@@ -13,6 +13,7 @@ document.addEventListener("keydown", function(event){
     var key = event.key;
     var keyIndex = getKey(key);
     if(keyIndex != -1){
+        animateDrum(key);
         playSound(keyIndex);
     }
 });
@@ -70,4 +71,14 @@ function getKey(key){
         default:
             return -1;
     }
+}
+
+// Animation
+function animateDrum(key){
+    var keyElement = document.querySelector("."+key);
+    keyElement.classList.add("pressed");
+
+    setTimeout(function(){
+        keyElement.classList.remove("pressed");
+    }, 100);
 }
