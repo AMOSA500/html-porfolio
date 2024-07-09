@@ -50,19 +50,15 @@ $(".box").click(function(){
 
 function checkAnswer(){
     if(userClickedPattern.toString() == gamePattern.toString()){
-        
+        $("body").addClass("correct");
        // Call next color
         setTimeout(function(){
+            $("body").removeClass("correct");
             nextSequence();
             userClickedPattern = [];
         },1000);
     }else{
-        $("#score").text(counter);
-        var failedSound = new Audio("sounds/wrong.mp3");
-        failedSound.play();
-        $("body").addClass("game-over");
-        $("#level-title").text("Game Over, Restart in 2 seconds").css("color","black");
-        $(".score").css("color","black");
+        gameOver();
         setTimeout(function(){ 
             // Reset the game
             location.reload();
@@ -71,6 +67,17 @@ function checkAnswer(){
         
     }
 }
+
+// Game over
+function gameOver(){
+    $("#score").text(counter);
+    var failedSound = new Audio("sounds/wrong.mp3");
+    failedSound.play();
+    $("body").addClass("game-over");
+    $("#level-title").text("Game Over, Restart in 2 seconds").css("color","black");
+    $(".score").css("color","black");
+}
+
 function animatePress(currentColor){
     $("#"+currentColor).addClass("pressed");
     setTimeout(function(){
