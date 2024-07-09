@@ -37,7 +37,14 @@ body{
     border-radius: 20px;
     border: 0.5rem solid #16010a;
 }
+.score{
+  width: 100%;
+  position:absolute;
+  bottom: 0;
+  text-align: center;
+    
 
+}
 .pressed {
     box-shadow: 0 0 20px white;
     background-color: grey;
