@@ -6,8 +6,15 @@ var started = false;
 var counter = 0;
 $(document).keydown(function(e){
     if (started == false){
+        $("body").removeClass("game-over");
+        $("#level-title").css("color", "#FEF2BF");
+        $(".score").css("color","#FEF2BF");
         $("#level-title").text(displayText+counter);
+        if(gamePattern.length == 0){
+            nextSequence();
+        }
         started = true;
+        
     }
 });
 
@@ -51,6 +58,8 @@ $(".box").click(function(){
 function checkAnswer(){
     if(userClickedPattern.toString() == gamePattern.toString()){
         $("body").addClass("correct");
+        $(".timer-box").text(gamePattern.length);
+
        // Call next color
         setTimeout(function(){
             $("body").removeClass("correct");
@@ -59,11 +68,6 @@ function checkAnswer(){
         },1000);
     }else{
         gameOver();
-        setTimeout(function(){ 
-            // Reset the game
-            location.reload();
-
-        }, 2000);
         
     }
 }
@@ -74,8 +78,19 @@ function gameOver(){
     var failedSound = new Audio("sounds/wrong.mp3");
     failedSound.play();
     $("body").addClass("game-over");
-    $("#level-title").text("Game Over, Restart in 2 seconds").css("color","black");
+    $("#level-title").text("Game Over, Press Any Key to Restart").css("color","black");
     $(".score").css("color","black");
+    started = false;
+    startOver();
+}
+
+// Start OVer
+function startOver(){
+    //press any key to startover
+    counter = 0;
+    gamePattern = [];
+    userClickedPattern = [];
+    $(".timer-box").text("0");
 }
 
 function animatePress(currentColor){
