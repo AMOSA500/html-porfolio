@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs') %>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center display-1">The Blog WebApp</div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Recent blog posts</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <img src="images/blog1.jpg" alt="blog image">
+                        <div class="card-body">
+                            <p class="card-text text-primary h6">Sunday, 1 2024</p>
+                            <h4 class="card-title">Jasmine Read joins exeter city women</h4>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <a href="/blog" class="btn btn-primary">Read More</a>
+                        </div>
+                    
+                    </div>
+
+                </div>
+            </div>
+            <hr> 
+          
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="display-4">All Posts</p>
+                </div>
+                
+            </div> 
+        
+            <div class="row">
+                <div class="col-md-1"><p class="btn btn-outline-primary">Design</p></div>
+                <div class="col-md-1"><p class="btn btn-outline-success">Research</p></div>
+                <div class="col-md-1"><p class="btn btn-outline-danger">Presentation</p></div>
+            </div>
+            <% if(locals.posts){%>
+                <% posts.forEach(post => {%>
+                    <div class="row" id="all_blog">
+                        
+                                <div class="col-md-4">
+                                    <img src="images/blog1.jpg" class="float-start img-thumbnail" alt="blog image" >
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="card-text text-primary h6"><%= post["formattedDate"] %></p>
+                                    <h4 class="card-title"><%= post["title"] %></h4>
+                                    <p class="card-text"><%= post["formattedContext"] %></p>
+                                    <p class="card-text"><small class="text-muted">Last updated <%= post["diff"] %></small></p>
+                                    <a href="/blog" class="btn btn-light">Read More</a>
+                                        
+                                </div>
+                            
+                    </div>
+                <%})%>
+            <%}%>
+        </div>
+        
+          
+          
+
+            
+    
+    <%- include('partials/footer.ejs') %>
