@@ -12,15 +12,16 @@
                     <h5>Recent blog posts</h5>
                 </div>
             </div>
+            <% if(locals.lastestPost) {%>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-3">
                         <img src="images/blog1.jpg" alt="blog image">
                         <div class="card-body">
-                            <p class="card-text text-primary h6">Sunday, 1 2024</p>
-                            <h4 class="card-title">Jasmine Read joins exeter city women</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <p class="card-text text-primary h6"><%= lastestPost["formattedDate"]%></p>
+                            <h4 class="card-title"><%= lastestPost["title"]%></h4>
+                            <p class="card-text"><%= lastestPost["formattedContext"]%></p>
+                            <p class="card-text"><small class="text-muted">Last updated <%= lastestPost["diff"]%></small></p>
                             <a href="/blog" class="btn btn-primary">Read More</a>
                         </div>
                     
@@ -28,6 +29,7 @@
 
                 </div>
             </div>
+            <%}%>
             <hr> 
           
             <div class="row">

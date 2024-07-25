@@ -12,24 +12,30 @@ var posts = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Helper function to format date
 function formatDateDifference(uploadedDate) {
     const now = new Date();
     const difference = formatDistanceToNowStrict(new Date(uploadedDate), { addSuffix: true });
     return difference;
 }
 
+// Split words
+function splitWords(content){
+    let words = content.split(" ");
+    if(words.length <= 25){
+        return content;
+    }else{
+        return words.slice(0,25).join(" ")+"...";
+    }
+}
+
+
 // Home Route
 app.get("/", (req,res)=>{
-    let str = "";
-    if(posts.length != 0){
-        const words = posts.content.split(" ");
-        if(words.length <= 25){
-            str = posts.content;
-        }else{
-            str = words.slice(0,25).join(" ")+"...";
-        }
-    }
+
+    // Format the date and content
     const formattedBlogs = posts.map(post => { 
+        let str = splitWords(post.content);
         return {
             ...post,
             formattedContext: str,
@@ -37,7 +43,20 @@ app.get("/", (req,res)=>{
             diff: formatDateDifference(post.date)
         };
     })
-    res.render("index.ejs",{posts: formattedBlogs});
+    // Last Post
+    const lastestPost = posts[posts.length-1];
+    if(posts.length === 0){
+        res.render("index.ejs",{posts: [], lastestPost: {}
+        });
+        return
+    }
+    const formattedLastestPost = {
+        ...lastestPost,
+        formattedContext: splitWords(lastestPost["content"]),
+        formattedDate: dateFormat(lastestPost.date, "mmmm d, yyyy"),
+        diff: formatDateDifference(lastestPost.date)
+    }
+    res.render("index.ejs",{posts: formattedBlogs, lastestPost: formattedLastestPost});
 });
 
 // Create route
@@ -45,6 +64,8 @@ app.get("/create", (req,res)=>{
     let success = req.query.success;
     res.render("create.ejs", {success: success});
 });
+
+// Submit route
 app.post("/submit", (req,res)=>{
     posts.push({
         title: req.body.title,
@@ -52,7 +73,6 @@ app.post("/submit", (req,res)=>{
         image: req.body.image,
         date: new Date(), //dateFormat(new Date(), "mmmm d, yyyy"),
     });
-    console.log(posts);
     res.redirect("/create?success=true");
 });
 
