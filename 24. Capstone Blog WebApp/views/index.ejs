@@ -36,7 +36,6 @@
                 <div class="col-md-12">
                     <p class="display-4">All Posts</p>
                 </div>
-                
             </div> 
         
             <div class="row">
@@ -44,22 +43,20 @@
                 <div class="col-md-1"><p class="btn btn-outline-success">Research</p></div>
                 <div class="col-md-1"><p class="btn btn-outline-danger">Presentation</p></div>
             </div>
+
             <% if(locals.posts){%>
                 <% posts.forEach(post => {%>
                     <div class="row" id="all_blog">
-                        
-                                <div class="col-md-4">
-                                    <img src="images/blog1.jpg" class="float-start img-thumbnail" alt="blog image" >
-                                </div>
-                                <div class="col-md-8">
-                                    <p class="card-text text-primary h6"><%= post["formattedDate"] %></p>
-                                    <h4 class="card-title"><%= post["title"] %></h4>
-                                    <p class="card-text"><%= post["formattedContext"] %></p>
-                                    <p class="card-text"><small class="text-muted">Last updated <%= post["diff"] %></small></p>
-                                    <a href="/blog" class="btn btn-light">Read More</a>
-                                        
-                                </div>
-                            
+                        <div class="col-md-4">
+                            <img src="images/blog1.jpg" class="float-start img-thumbnail" alt="blog image">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="card-text text-primary h6"><%= post["formattedDate"] %> <span style="float: right;"><a href="/edit?id=<%=post["encryptedId"]%>" target="_blank"><button class="btn btn-danger btn-sm"><i class="fa fa-pencil"></i></button></a></span></p>
+                            <h4 class="card-title"><%= post["title"] %></h4>
+                            <p class="card-text"><%= post["formattedContext"] %></p>
+                            <p class="card-text"><small class="text-muted">Last updated <%= post["diff"] %></small></p>
+                            <a href="/blog" class="btn btn-light">Read More</a>
+                        </div>
                     </div>
                 <%})%>
             <%}%>

@@ -1,6 +1,7 @@
 <%- include("partials/header.ejs") %>
 
-<form action="/update" method="post">
+<% if(locals.post){%>
+<form action="edit/<%=post.id%>/blogpage" method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -12,7 +13,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title" required value="<%= post.title %>">
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
                 <div class="form-group
                 ">
                     <label for="content">Content</label>
-                    <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="15" required><%= post.content%></textarea>
                 </div>
             </div>
         </div>
@@ -29,7 +30,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="image" class="form-label">Image</label>
-                    <input type="file" class="form-control form-control-lg input-group-text" id="image" name="image" required>
+                    <input type="file" class="form-control form-control-lg input-group-text" id="image" name="image" required value="<%=post.image%>">
                 </div>
 
             </div>
@@ -42,5 +43,6 @@
     </div>
 
 </form>
+<%}%>
 
 <%- include("partials/footer.ejs") %>
