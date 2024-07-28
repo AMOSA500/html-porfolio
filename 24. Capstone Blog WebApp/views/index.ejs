@@ -51,7 +51,14 @@
                             <img src="images/blog1.jpg" class="float-start img-thumbnail" alt="blog image">
                         </div>
                         <div class="col-md-8">
-                            <p class="card-text text-primary h6"><%= post["formattedDate"] %> <span style="float: right;"><a href="/edit?id=<%=post["encryptedId"]%>" target="_blank"><button class="btn btn-danger btn-sm"><i class="fa fa-pencil"></i></button></a></span></p>
+                            <p class="card-text text-primary h6" style="display: inline-block;"><%= post["formattedDate"] %> 
+                                <span style="display: inline-block;">
+                                    <form action="/edit" method="get" style="float: right;">
+                                        <input type="hidden" name="id" value="<%=post["encryptedId"]%>">
+                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-pencil"></i></button>
+                                    </form>
+                            </span>
+                            </p>
                             <h4 class="card-title"><%= post["title"] %></h4>
                             <p class="card-text"><%= post["formattedContext"] %></p>
                             <p class="card-text"><small class="text-muted">Last updated <%= post["diff"] %></small></p>

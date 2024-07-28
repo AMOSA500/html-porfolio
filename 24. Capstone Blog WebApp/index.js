@@ -4,16 +4,24 @@ import dateFormat from "dateformat";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import CryptoJS from "crypto-js";
 
-// Encryption and Decryption key
-const key = CryptoJS.enc.Utf8.parse("123456789");
+// Encryption and Decryption secretKey
+const secretKey = "123456789";
 
 // Express app
 const app = express();
 const port = 3000;
 
 // Array and variables
-var posts = [];
-var counter = 0;
+var posts = [
+    {
+        id: 1,
+        title: "Ten Hag has confidence in Rashford",
+        content: "Rashford scored 30 goals in the 2022-23 season but then backed that up with just eight in all competitions last term, which ultimately cost his spot in Gareth Southgate's England squad for Euro 2024.",    
+        image: "https://via.placeholder.com/150",   
+        date: new Date()
+    }
+];
+var counter = posts.length; // counter for id
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,16 +29,16 @@ app.use(express.static("public"));
 
 // Encryption and Decryption functions
 function encryptId(data) {
-  return CryptoJS.AES.encrypt(data.toString(), key).toString();
+  return CryptoJS.AES.encrypt(data.toString(), secretKey).toString();
 }
 
-function decryptId(data) {
-    return CryptoJS.AES.decrypt(data, key).toString(CryptoJS.enc.Utf8);
+function decryptId(encryptedId) {
+    const bytes = CryptoJS.AES.decrypt(encryptedId, secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
 }
 
 // Helper function to format date
 function formatDateDifference(uploadedDate) {
-    const now = new Date();
     const difference = formatDistanceToNowStrict(new Date(uploadedDate), { addSuffix: true });
     return difference;
 }
@@ -48,14 +56,10 @@ function truncateWords(content){
 
 // Home Route
 app.get("/", (req,res)=>{
-    
-
-
     // Format the date and content
     const formattedBlogs = posts.map(post => { 
-        // encrypt id
-        let encryptedId = encryptId(post.id);
-        let str = truncateWords(post.content);
+        let encryptedId = encryptId(post.id); // encrypt id
+        let str = truncateWords(post.content); // truncate content
         return {
             ...post,
             encryptedId: encryptedId,
@@ -93,20 +97,46 @@ app.post("/submit", (req,res)=>{
         title: req.body.title,
         content: req.body.content,
         image: req.body.image,
-        date: new Date(), //dateFormat(new Date(), "mmmm d, yyyy"),
+        date: new Date(), 
     });
     res.redirect("/create?success=true");
 });
 
 // Edit route
-app.get("/edit", (req,res)=>{
+app.get("/edit", (req,res)=>{  
     const id = decryptId(req.query.id);
     const post = posts.find(post => post.id == parseInt(id));
     if(!post){
-        res.status(404).render("Post not found");
+        res.send("Post not found");
         return;
     }
-    res.render("edit.ejs", {post: post});
+    const formattedPost = {
+        ...post,
+        enId: encryptId(post.id),
+    }
+    
+    res.render("edit.ejs", {post: formattedPost});
+});
+
+// update or delete
+app.post("/update", (req, res)=>{
+    let action = req.body.action;
+    let id = decryptId(req.body.id);
+    let post = posts.find(post => post.id == parseInt(id));
+    if(!post){
+        res.send("Post not found");
+        return;
+    }else{
+        if(action === "update"){
+            post.title = req.body.title;
+            post.content = req.body.content;
+            post.image = req.body.image
+            res.redirect("/");
+        }else if(action === "delete"){
+            posts = posts.filter(post => post.id !== parseInt(id));
+            res.redirect("/");
+        }
+    }
 });
 
 
