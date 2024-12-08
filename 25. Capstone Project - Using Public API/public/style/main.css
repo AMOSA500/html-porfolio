@@ -1,0 +1,349 @@
+
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    background: linear-gradient(to bottom, #ffcccc, #3c88fc) no-repeat fixed;
+}
+
+.grid-container{
+  display: inline-grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  width: 100%;
+  gap: 10px;
+  padding: 20px;
+}
+
+.grid-container > .item{
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #c9b7b7;
+  text-align: center;
+  padding: 5px;
+}
+.calendar{
+  grid-column: 1/ 5;
+  height: 20vh;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, #ff4d4d, #b33939) no-repeat fixed;
+  margin: auto;
+  overflow: hidden;
+}
+
+.calendar > .cal-event{
+  width: 100%;
+  height: 15vh;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.274);
+ 
+}
+.event_title{
+  font-size: 1.0em;
+  font-weight: bold;
+}
+.event-box{
+  width: 70%;
+  position: relative;
+  height: 150px;
+  text-align: center;
+  border-radius:0 0 10px 10px;
+  margin: auto;
+  padding: 0 0 10px 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.274); 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  text-wrap: normal;
+  overflow: scroll;
+}
+
+.event-icon {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 1.0em;
+  font-weight: bold;
+}
+.event-box > h6{
+  font-weight: bold;
+  padding: 0 10px;
+  margin-top: 10px;
+}
+.event-box > p{
+  font-size: 0.8em;
+  padding: 0 10px;
+}
+
+
+/* section  */
+.today-box {
+  /* background: linear-gradient(to left, #485fed, rgba(255, 44, 118, .25)), #485fed; */
+  color: #fff;
+  height: auto;
+  padding: 15px 0px;
+  position: relative;
+
+}
+/* end of section */
+
+.weather{
+  grid-column: 1/span 2;
+  max-width: 100%;
+  height: 20vh;
+  background: linear-gradient(to top, #2e86de, #34ace0) no-repeat fixed;
+  color: white;
+}
+.weather h4{
+  font-weight: bold;
+}
+.weather img{
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.199);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.274);
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+
+}
+.cloud{
+  grid-column: 3/span 2;
+  height: 20vh;
+  overflow: scroll;
+  background-color: #079992 !important;
+}
+.cloud > ul{
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  font-size: 0.7em;
+}
+.cloud img{
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+.cloud > ul li > a{
+  color: white;
+  text-decoration: none;
+}
+
+
+.fx{
+  grid-column: 1/2;
+
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.616), rgba(0, 0, 0, 0.5)), url("https://img.freepik.com/free-vector/buy-sell-trend-forex-trading-background_1017-31712.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1724716800&semt=ais_hybrid");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.fx ul{
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  font-size: 0.5em;
+}
+.fx ul li {
+  padding-top: 10px;
+}
+.news{
+  grid-column: 2/5;
+  background: linear-gradient(to right, #ff4d4d, #b33939) no-repeat fixed;
+  color: white;
+  text-align: left;
+  overflow: scroll;
+}
+.news span{
+  font-size: 0.7em;
+}
+.news img{
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  float: right;
+}
+.news, .fx{
+  width: 100%;
+  height: 15vh;
+  margin: auto;
+}
+
+.job{
+  grid-column: 1/ span 4;
+  height: 15vh;
+}
+.quote{
+  grid-column: 1/span 4;
+  height: 10vh;
+  overflow: scroll;
+  background-color:black !important; /* Light grey background */
+}
+blockquote {
+  height: auto;
+  border-left: 10px solid #ccc; 
+  margin: 0; 
+  padding: 0; 
+  font-style: italic;
+  color: #ffffff;
+  font-size: .7em;
+}
+
+blockquote p {
+  margin: 0;  
+  padding: 10px 20px;
+}
+
+blockquote cite {
+  display: block; 
+  padding-right: 10px;
+  font-size: 14px;
+  color: #777; 
+  text-align: right; 
+}
+
+.author{
+  grid-column: 1/span 4;
+  height: 3vh;
+  background-color: rgba(2, 85, 163, 0.404);
+  border-radius: 10px;
+  text-align: center;
+  padding: 1px;
+  font-size: 1.0em;
+  color: white;
+}
+.large-view{
+  display: none;
+} 
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    background: #3586ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  footer .social_icon{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    padding: 0;
+  }
+  
+  footer .social_icon li{
+    list-style: none;
+  }
+  footer .social_icon li a {
+    font-size: 1.5em;
+    color: #ccc;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  footer .social_icon li a:hover {
+    transform: translateY(-15px);
+    color: blue;
+  }
+  
+  footer .menu li a {
+    font-size: 1.2em;
+    color: #ccc;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+  }
+  footer .menu li a:hover {
+    opacity: 1;
+    color: #fff;
+  }
+  p {
+    color: whtie;
+    text-align: center;
+    font-size: 1.1em;
+  }
+  
+  .copyright {
+    color: white;
+  }
+  
+  /*wave and animation*/
+  footer .wave {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url(https://i.ibb.co/rZt4Nhg/wave.png);
+    background-size: 1000px 100px;
+  }
+  
+  footer .wave#wave1 {
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+    animation: animateWave 4s linear infinite;
+  }
+  
+  footer .wave#wave2 {
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animateWave_02 4s linear infinite;
+  }
+  footer .wave#wave3 {
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 0;
+    animation: animateWave 3s linear infinite;
+  }
+  
+  footer .wave#wave4 {
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animateWave_02 3s linear infinite;
+  }
+  
+  @keyframes animateWave {
+    0% {
+      background-position-x: 1000px;
+    }
+    100% {
+      background-position-x: 0px;
+    }
+  }
+  
+  @keyframes animateWave_02 {
+    0% {
+      background-position-x: 0px;
+    }
+    100% {
+      background-position-x: 1000px;
+    }
+  }
+  
+  @media screen and (min-width: 800px) {
+    .grid-container{
+      display: none;
+    }
+      .large-view{
+        height: 100vh;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+  }

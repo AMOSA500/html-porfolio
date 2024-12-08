@@ -1,0 +1,50 @@
+<footer>
+    <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social_icon">
+        <li><a href="https://www.facebook.com/tsionaf/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="https://x.com/Itweetwithnaf"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="https://www.linkedin.com/in/amosa500/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        <li><a href="http://instagram.com/northdealsfx"><ion-icon name="logo-instagram"></ion-icon></a></li>
+    </ul>
+</footer>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+   
+    const evbox = document.getElementsByClassName("event-box");
+    for (let i = 1; i < evbox.length; i++) {
+        evbox[i].style.display = "none";    
+        };
+    let index = 0;
+    function nextEvent(){
+        evbox[index].style.display = "none";
+        index = (index + 1) % evbox.length;
+        evbox[index].style.display = "block";
+        
+    }
+    function prevEvent() {
+        evbox[index].style.display = "none";
+        index = (index - 1 + evbox.length) % evbox.length;
+        evbox[index].style.display = "block";
+    }
+  
+    document.getElementById('carousel-control-next').addEventListener('click', nextEvent);
+    document.getElementById('carousel-control-prev').addEventListener('click', prevEvent);
+
+
+   
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

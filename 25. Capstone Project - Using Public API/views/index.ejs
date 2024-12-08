@@ -1,0 +1,127 @@
+<%- include("partials/header.ejs")%>
+
+<div class="grid-container">
+    <div class="item calendar">
+      
+          <% if(locals.events) { %>
+           
+              <section class="today-box" >  
+                <% events.forEach(event => { %>
+                <div class="event-box">
+                  <div class="event-icon bg-success">
+                    <%= event.start %>
+                  </div>               
+                  <h6><%= event.summary %></h6>
+                  <p><%= event.description %></p>
+                </div>
+                <% }); %>
+                <% } else { %>
+                  <p>
+                    <form action="/auth" method="get" class="cal-auth">
+                      <button type="submit">Auth2:0</button>
+                    </form>
+                  </p>
+                <% } %>
+             
+                 <a class="carousel-control-prev" id="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                  <a class="carousel-control-next" id="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+
+              </section>
+    </div>
+    <div class="item weather">
+      <img src="https://openweathermap.org/img/wn/<%= weather[0].icon %>@2x.png" alt="weather">
+      <span style="font-size: 2.5rem; font-weight: bolder;"><%= Math.round(temp) %>°C</span>
+      <h4><%= weather[0].main %> - <%= weather[0].description %></h4> 
+      <!-- reference -->
+       <small style="font-size: xx-small; color: darkgray;">https://api.openweathermap.org</small>
+    </div>
+    <div class="item cloud">
+      <h5 style="border-bottom: 1px solid white; color: white">Drive Files</h5> 
+        <% if(locals.drive) { %>
+           <ul>
+            <% drive.forEach(file => { %>
+              <li>
+                <a href="https://drive.google.com/file/d/<%=file.id %>/view" target="_blank">
+                  <!-- i need to create a docx icon with filename under using html -->
+                   <!-- check if a file path exist -->
+                    <% if(file.name.includes(".docx")) { %>
+                      <img src="images/docx.png" alt="docx">
+                    <% } else if(file.name.includes(".pdf")) { %>
+                      <img src="images/pdf.png" alt="pdf">
+                    <% } else { %>
+                      <img src="images/xlsx.png" alt="png">
+                    <% } %>
+                  
+                  <span for="filename" id="<%= file.id %>"></span>
+                  <script>
+                    document.getElementById("<%= file.id %>").innerHTML = truncateFilename("<%= file.name %>", 6);
+                  </script>
+                </a>
+              </li>
+             
+            <% }); %>
+           </ul>
+          
+        <% }  %>
+          
+    </div>
+    <div class="item fx">FX Rates
+
+      <ul>
+        <% if(locals.forex) { %>
+          <li>EUR/USD - <%= forex.USD %></li>
+          <li>EUR/GBP - <%= forex.GBP %></li>
+        <% }  %>
+      </ul>
+    </div> 
+    <% if(locals.news) { %> 
+    <div class="item news" style="background-image: linear-gradient(rgba(0, 0, 0, 0.616), rgba(0, 0, 0, 0.5)), url('<%= news.multimedia[0].url %>');   background-repeat: no-repeat; background-position: center center; background-size: cover;">
+          <img src="<%= news.multimedia[0].url %>" alt="news">
+          <h6>Top Story: <%= news.title %></h6>
+              <blockquote style="text-align: left; padding-left: 10px;">
+                <%= news.abstract %>
+                <a href="<%= news.url %>" target="_blank">Read more...</a>
+              </blockquote>
+
+       
+    </div> 
+    <% } %>
+      
+    <div class="item job">
+      <h5>Job Opportunities</h5>
+      <ul>
+        <% if(locals.jobs) { %>
+          <% jobs.forEach(job => { %>
+            <li>
+              <h6><%= job.title %></h6>
+              <p><%= job.company %></p>
+              <p><%= job.location %></p>
+              <p><%= job.created_at %></p>
+              <a href="<%= job.url %>" target="_blank">Apply</a>
+            </li>
+          <% }); %>
+        <% }  %>
+      </ul>
+    </div>
+    <div class="item quote">
+      <blockquote>
+        <p><%= quote.quote %> <cite title="Source Title"><%= quote.author %></cite></p>
+      </blockquote>
+
+    </div>
+    <div class="author">Created By &#128151; Nafiu Amosa</div>
+   
+</div>
+
+<div class="large-view">
+  <h1>Sorry, this app is only available on mobile</h1>
+</div>
+
+
+<%- include("partials/footer.ejs")%>
